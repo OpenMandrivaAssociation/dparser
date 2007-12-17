@@ -11,7 +11,6 @@ Source1: python-dparser-calc.tar.bz2
 Patch1: dparser-makefile.patch.bz2
 License: BSD
 Group: Development/Python
-BuildRoot: %{_tmppath}/%{name}-buildroot
 Url: http://dparser.sourceforge.net/
 BuildRequires: libpython-devel
 BuildRequires: python
