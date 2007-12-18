@@ -68,6 +68,9 @@ python setup.py install --root=$RPM_BUILD_ROOT --record=INSTALLED_FILES
 
 mkdir -p $RPM_BUILD_ROOT%_mandir/man1
 mv  $RPM_BUILD_ROOT%_prefix/man/man1/* $RPM_BUILD_ROOT%_mandir/man1/
+%ifarch x86_64
+mv  $RPM_BUILD_ROOT{/usr/lib,%_libdir}/libdparse.a
+%endif
 
 %clean
 rm -rf $RPM_BUILD_ROOT
