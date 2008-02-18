@@ -1,6 +1,6 @@
 %define name dparser
 %define version 1.14
-%define release %mkrel 1
+%define release %mkrel 2
 
 Summary: Simple but powerful tool for parsing
 Name: %{name}
