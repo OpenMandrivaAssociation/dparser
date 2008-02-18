@@ -2,7 +2,7 @@
 %define version 1.14
 %define release %mkrel 1
 
-Summary: DParser is a simple but powerful tool for parsing
+Summary: Simple but powerful tool for parsing
 Name: %{name}
 Version: %{version}
 Release: %{release}
