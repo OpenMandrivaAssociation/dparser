@@ -1,6 +1,6 @@
 %define name dparser
-%define version 1.14
-%define release %mkrel 4
+%define version 1.15
+%define release %mkrel 1
 
 Summary: Simple but powerful tool for parsing
 Name: %{name}
@@ -36,20 +36,20 @@ Group: Development/Python
 
 %description  -n python-%{name}
 DParser is a simple but powerful tool for parsing, written by J. Plevyak.
-DParser for Python gives Python programmers a seamless interface to DParser. 
+DParser for Python gives Python programmers a seamless interface to DParser.
 
-The features that set this Python parser apart from other Python parsers are: 
- + it can deal with any grammar (GLR) 
- + it is fast (based in C) 
- + it does not require a compiler to operate. 
+The features that set this Python parser apart from other Python parsers are:
+ + it can deal with any grammar (GLR)
+ + it is fast (based in C)
+ + it does not require a compiler to operate.
 
 DParser for Python also has many easy-to-use features found in other Python
-parsers: 
- + it does not require explicit definitions of tokens 
- + it does not require a separate, non-Python grammar file 
- + it uses function documentation strings to specify grammar rules 
+parsers:
+ + it does not require explicit definitions of tokens
+ + it does not require a separate, non-Python grammar file
+ + it uses function documentation strings to specify grammar rules
  + it does not output parser code that the user must compile or run.
- 
+
 %prep
 
 %setup -q -n d
