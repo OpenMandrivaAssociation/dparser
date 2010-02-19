@@ -13,7 +13,7 @@ License: BSD
 Group: Development/Python
 BuildRoot: %{_tmppath}/%{name}-buildroot
 Url: http://dparser.sourceforge.net/
-BuildRequires: libpython-devel
+BuildRequires: python-devel
 BuildRequires: python
 
 %description
