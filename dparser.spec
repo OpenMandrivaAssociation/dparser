@@ -1,6 +1,6 @@
 %define name dparser
 %define version 1.15
-%define release %mkrel 1
+%define release %mkrel 2
 
 Summary: Simple but powerful tool for parsing
 Name: %{name}
@@ -13,8 +13,7 @@ License: BSD
 Group: Development/Python
 BuildRoot: %{_tmppath}/%{name}-buildroot
 Url: http://dparser.sourceforge.net/
-BuildRequires: python-devel
-BuildRequires: python
+%py_requires -d
 
 %description
 DParser is an simple but powerful tool for parsing. You can specify the form of
@@ -65,7 +64,7 @@ make
 rm -rf $RPM_BUILD_ROOT
 PREFIX=$RPM_BUILD_ROOT%_prefix make install
 cd python
-python setup.py install --root=$RPM_BUILD_ROOT --record=INSTALLED_FILES
+python setup.py install --root=$RPM_BUILD_ROOT
 
 mkdir -p $RPM_BUILD_ROOT%_mandir/man1
 mv  $RPM_BUILD_ROOT%_prefix/man/man1/* $RPM_BUILD_ROOT%_mandir/man1/
@@ -81,12 +80,11 @@ rm -rf $RPM_BUILD_ROOT
 %_bindir/*
 %_includedir/*
 %_libdir/*.a
-%_libdir/python%pyver/site-packages/*
 %_mandir/man1/*
 %defattr(644,root,root,755)
 %doc BUILD_VERSION CHANGES COPYRIGHT README *.html tests verilog
 
-%files  -n python-%{name} -f python/INSTALLED_FILES
+%files  -n python-%{name}
 %defattr(-,root,root,0755)
 %doc python/README python/*.html python/tests python/contrib python/calc.py
-
+%py_platsitedir/*
