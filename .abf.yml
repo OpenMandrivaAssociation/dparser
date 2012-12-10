@@ -1,3 +1,4 @@
 sources:
-  "d-1.15-src.tar.bz2:"	aab32429f15700994258be345808497ff3ca74b1
-  "python-dparser-calc.tar.bz2:"	91c1ee45947855b7bdeace085a62b44c6d844f86
+  "d-1.15-src.tar.bz2": aab32429f15700994258be345808497ff3ca74b1
+  "dparser-makefile.patch.bz2": 5cc2672932ece984503e7149bb4d6d085e05215a
+  "python-dparser-calc.tar.bz2": 91c1ee45947855b7bdeace085a62b44c6d844f86
