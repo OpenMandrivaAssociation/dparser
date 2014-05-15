@@ -5,6 +5,7 @@ Version: 1.30
 Release: 1
 Source0: http://aleron.dl.sourceforge.net/sourceforge/dparser/d-%{version}-src.tar.gz
 Source1: python-dparser-calc.tar.bz2
+Source2: %{name}.rpmlintrc
 License: BSD
 Group: Development/Python
 Url: http://dparser.sourceforge.net/
