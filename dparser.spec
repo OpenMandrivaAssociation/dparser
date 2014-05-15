@@ -1,19 +1,14 @@
-%define name dparser
-%define version 1.15
-%define release %mkrel 3
-
 Summary: Simple but powerful tool for parsing
-Name: %{name}
-Version: %{version}
-Release: %{release}
-Source0: http://aleron.dl.sourceforge.net/sourceforge/dparser/d-%{version}-src.tar.bz2
+
+Name: dparser
+Version: 1.30
+Release: 1
+Source0: http://aleron.dl.sourceforge.net/sourceforge/dparser/d-%{version}-src.tar.gz
 Source1: python-dparser-calc.tar.bz2
-Patch1: dparser-makefile.patch.bz2
 License: BSD
 Group: Development/Python
-BuildRoot: %{_tmppath}/%{name}-buildroot
 Url: http://dparser.sourceforge.net/
-%py_requires -d
+BuildRequires:  python-devel
 
 %description
 DParser is an simple but powerful tool for parsing. You can specify the form of
@@ -28,8 +23,8 @@ situation that occurs in the real world.
 
 
 %package -n python-%{name}
-
 Summary: DParser python binding
+
 Requires: python
 Group: Development/Python
 
@@ -50,92 +45,38 @@ parsers:
  + it does not output parser code that the user must compile or run.
 
 %prep
-
 %setup -q -n d
 %setup -q -T -D -a 1 -n d
-
-#%patch1 -p1
 
 %build
 make
 #make test
 
 %install
-rm -rf $RPM_BUILD_ROOT
-PREFIX=$RPM_BUILD_ROOT%_prefix make install
+PREFIX=%{buildroot}%{_prefix} make install
 cd python
-python setup.py install --root=$RPM_BUILD_ROOT
+python setup.py install --root=%{buildroot}
 
-mkdir -p $RPM_BUILD_ROOT%_mandir/man1
-mv  $RPM_BUILD_ROOT%_prefix/man/man1/* $RPM_BUILD_ROOT%_mandir/man1/
+mkdir -p %{buildroot}%{_mandir}/man1
+mv  %{buildroot}%{_prefix}/man/man1/* %{buildroot}%{_mandir}/man1/
 %ifarch x86_64
-mv  $RPM_BUILD_ROOT{/usr/lib,%_libdir}/libdparse.a
+mv  %{buildroot}{/usr/lib,%{_libdir}}/libdparse.a
 %endif
 
 %clean
-rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root,0755)
-%_bindir/*
-%_includedir/*
-%_libdir/*.a
-%_mandir/man1/*
+%{_bindir}/*
+%{_includedir}/*
+%{_libdir}/*.a
+%{_mandir}/man1/*
 %defattr(644,root,root,755)
-%doc BUILD_VERSION CHANGES COPYRIGHT README *.html tests verilog
+%doc CHANGES COPYRIGHT README *.html tests verilog
 
 %files  -n python-%{name}
 %defattr(-,root,root,0755)
 %doc python/README python/*.html python/tests python/contrib python/calc.py
-%py_platsitedir/*
+%{py_platsitedir}/*
 
 
-%changelog
-* Fri Nov 05 2010 Funda Wang <fwang@mandriva.org> 1.15-3mdv2011.0
-+ Revision: 593658
-- rebuild for py 2.7
-
-* Wed May 05 2010 Funda Wang <fwang@mandriva.org> 1.15-2mdv2010.1
-+ Revision: 542340
-- fix file list
-
-* Fri Feb 19 2010 Funda Wang <fwang@mandriva.org> 1.15-1mdv2010.1
-+ Revision: 508200
-- fix BR
-
-* Wed Feb 18 2009 Jérôme Soyer <saispo@mandriva.org> 1.15-1mdv2009.1
-+ Revision: 342457
-- New upstream release
-
-* Thu Jul 24 2008 Thierry Vignaud <tv@mandriva.org> 1.14-4mdv2009.0
-+ Revision: 244522
-- rebuild
-
-* Mon Feb 18 2008 Thierry Vignaud <tv@mandriva.org> 1.14-2mdv2008.1
-+ Revision: 170800
-- rebuild
-- fix "foobar is blabla" summary (=> "blabla") so that it looks nice in rpmdrake
-
-  + Olivier Blin <oblin@mandriva.com>
-    - restore BuildRoot
-
-* Tue Dec 18 2007 Thierry Vignaud <tv@mandriva.org> 1.14-1mdv2008.1
-+ Revision: 132805
-- fix installing on x86_64
-- kill re-definition of %%buildroot on Pixel's request
-- import dparser
-
-
-* Thu Mar 23 2006 Lenny Cartier <lenny@mandriva.com> 1.14-1mdk
-- 1.14
-
-* Sun Dec 05 2004 Michael Scherer <misc@mandrake.org> 1.13-2mdk
-- Rebuild for new python
-- fix directory
-
-* Mon Oct 11 2004 Lenny Cartier <lenny@mandrakesoft.com> 1.13-1mdk
-- 1.13
-
-* Tue Aug 31 2004 Lenny Cartier <lenny@mandrakesoft.com> 1.11-1mdk
-- from Gaetan Lehmann <glehmann@netcourrier.com> :
-	- Create package from scratch for mandrake system
