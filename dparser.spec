@@ -8,7 +8,7 @@ Source1: python-dparser-calc.tar.bz2
 Source2: %{name}.rpmlintrc
 License: BSD
 Group: Development/Python
-Url: http://dparser.sourceforge.net/
+Url: https://dparser.sourceforge.net/
 BuildRequires:  python-devel
 
 %description
