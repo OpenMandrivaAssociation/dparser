@@ -9,6 +9,7 @@ Source2: %{name}.rpmlintrc
 License: BSD
 Group: Development/Python
 Url: https://dparser.sourceforge.net/
+BuildRequires:	make
 BuildRequires:  python-devel
 
 %description
